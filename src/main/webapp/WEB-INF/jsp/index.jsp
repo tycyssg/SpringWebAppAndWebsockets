@@ -93,6 +93,7 @@
 <input onclick="sendMessage()" value="Send" type="button">
 </form>
 
+<!-- get the info when the user submit the user and which file want to edit. -->
 <input type="hidden" value="${name}" id="name">
 <input type="hidden" value="${file}" id="file">
 

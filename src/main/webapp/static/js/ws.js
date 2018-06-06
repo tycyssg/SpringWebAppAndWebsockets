@@ -11,7 +11,6 @@
 		lineBefore = document.getElementById(clickId).value;
 	}
 		
-
 				//websockets logic
 				var socket = new WebSocket("ws://localhost:8080/bootapp/server");
 				var messageTextArea = document.getElementById("messages");
@@ -69,32 +68,45 @@
 					messageTextArea.value += "error...\n";
 				}
 				
-			
+				
+
+				
 				function updateFile(id){
-					console.log(id);
-					lineAfter = document.getElementById(id).value;
-					var idAndLine = id+"+"+lineAfter;
+
+				lineAfter = document.getElementById(id).value;
+				var idAndLine = id+"+"+lineAfter;
+				var lineLength = lineAfter.length;
+				console.log(lineLength);	
 		
 					setTimeout(function() { 
-						 var d = new Date().getTime();
-						 
-						 $.post("send-update",
-						        {
-								  after: lineAfter,
-						          before: lineBefore,
-						          fileName: fileHidden.value,
-						          time:d
-						         
-						        }, function(data,status){
-						        	document.getElementById(clickId+"m").innerHTML = status;
-						        	 $('#'+clickId+'h').removeClass('hr-primary').addClass('hr-success');
-						        	 setTimeout(function(){
-								         document.getElementById(clickId+"m").innerHTML="";
-								         $('#'+clickId+'h').removeClass('hr-success').addClass('hr-primary');
-								         },1500);
-						        	
-						        });
-					 }, 2000);
+					 var inLineLength = lineAfter.length;
+					 
+					if(lineLength == inLineLength){	
+				       	var timeNow = new Date().getTime();
+						console.log("Line after "+lineAfter);	 
+						console.log("Line before"+lineBefore);	
+						console.log("File Name "+fileHidden.value);	
+						console.log("Time "+timeNow);	
+						
+						$.post("send-update",
+							        {
+									  after: lineAfter,
+							          before: lineBefore,
+							          fileName: fileHidden.value,
+							          time:timeNow
+							         
+							        }, function(data,status){
+							        	document.getElementById(clickId+"m").innerHTML = status;
+							        	$('#'+clickId+'h').removeClass('hr-primary').addClass('hr-success');
+							        	setTimeout(function(){
+									     document.getElementById(clickId+"m").innerHTML="";
+									      $('#'+clickId+'h').removeClass('hr-success').addClass('hr-primary');
+									},1500);
+							 });
+							
+						}//end if
+				
+					 }, 2789);
 					
 					  socket.send(idAndLine);
 				}

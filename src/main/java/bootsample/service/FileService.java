@@ -27,7 +27,7 @@ public class FileService {
 
 			String sCurrentLine;
 			while ((sCurrentLine = br.readLine()) != null) {
-				list.add(sCurrentLine.trim());
+				list.add(sCurrentLine);
 			}
 
 		} catch (IOException e) {
@@ -47,11 +47,14 @@ public class FileService {
 			fw = new FileWriter(fileLocation+fileName);
 			bw = new BufferedWriter(fw);
 			
+			System.out.println(before);
+			System.out.println(after);
+	
 			for(int i = 0 ; i < list.size();i++) {
-				if(before.trim().equalsIgnoreCase(list.get(i))) {
+				
+			if(before.trim().equalsIgnoreCase(list.get(i))) {
 					list.set(i, after.trim());
 				}
-				
 				bw.write(list.get(i));
 				bw.newLine();
 			}

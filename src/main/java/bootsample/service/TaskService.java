@@ -39,14 +39,29 @@ public class TaskService{
     
     
     public void writeInfo(String before,String after,String file,long time) throws IOException {
-    	infoList.add(new InfoToUpdateTheFile(after, before, file, time));
+    	InfoToUpdateTheFile inf = new InfoToUpdateTheFile(after, before, file, time);
+    	if(after == null) {
+    		inf.setAfter("");
+    	}
+    	
+    	infoList.add(inf);
+    	
+    	System.out.println("before "+before);
+    	System.out.println("after "+after);
+    	System.out.println();
+    	System.out.println("The object created"+inf.toString());
+    	System.out.println("The List size" + infoList.size());
     	
     	File f = new File(fileLocation+file);
-    	if(new Date().getTime() - f.lastModified() >= 5 && infoList.size() > 1) {
+
+    	if(new Date().getTime() - f.lastModified() >= 5000) {
     		Collections.sort(infoList);
+    		System.out.println("A intrat in if cu time.");
+    		
     		for(InfoToUpdateTheFile info : infoList) {
     			fileService.writeTheFile(info.getBefore(),info.getAfter(),info.getFile(),fileService.extractTheProducts(info.getFile()));
     		}
+    		infoList.clear();
     	}
     }
     

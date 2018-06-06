@@ -51,6 +51,12 @@ public class InfoToUpdateTheFile implements Comparable<InfoToUpdateTheFile> {
 		return Long.valueOf(this.messageTime).compareTo(Long.valueOf(o.getMessageTime()));
 	}
 
+	@Override
+	public String toString() {
+		return "InfoToUpdateTheFile [after=" + after + ", before=" + before + ", file=" + file + ", messageTime="
+				+ messageTime + "]";
+	}
+
 
 
 	
