@@ -29,9 +29,7 @@
 			<a href="/" class="navbar-brand">Home</a>
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
-					<li><a href="new-task">Manage Task</a></li>
-					<li><a href="all-tasks">All Tasks</a></li>
-					<li><a href="get-one">One Task</a></li>
+					<li><a href="ws-index">Update Files</a></li>
 				</ul>
 			</div>
 			
