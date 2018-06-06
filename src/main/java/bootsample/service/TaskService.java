@@ -43,21 +43,16 @@ public class TaskService{
     	if(after == null) {
     		inf.setAfter("");
     	}
+    	if(before == null) {
+    		inf.setBefore("");
+    	}
     	
     	infoList.add(inf);
-    	
-    	System.out.println("before "+before);
-    	System.out.println("after "+after);
-    	System.out.println();
-    	System.out.println("The object created"+inf.toString());
-    	System.out.println("The List size" + infoList.size());
     	
     	File f = new File(fileLocation+file);
 
     	if(new Date().getTime() - f.lastModified() >= 5000) {
     		Collections.sort(infoList);
-    		System.out.println("A intrat in if cu time.");
-    		
     		for(InfoToUpdateTheFile info : infoList) {
     			fileService.writeTheFile(info.getBefore(),info.getAfter(),info.getFile(),fileService.extractTheProducts(info.getFile()));
     		}

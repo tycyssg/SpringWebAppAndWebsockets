@@ -102,8 +102,8 @@
 		<div>
 			<form>
 			<c:forEach var="inf" items="${info}" varStatus="infoIndex">
-			<input type="text" class="form-control" name="name" value="${inf}" id="infoId${infoIndex.count}" onclick="processIds(this.id)" onkeyup="updateFile(this.id)"/>	
-			<span id="infoId${infoIndex.count}m" class="text-success"></span>
+			<input type="text" class="form-control" name="name" value="${inf}" id="infoId${infoIndex.count}" onclick="processIds(this.id)" onkeyup="updateFile(this.id,event)"/>	
+			<stron><span id="infoId${infoIndex.count}m" class="text-primary"></span></stron>
 			<hr class="hr-primary" id="infoId${infoIndex.count}h" />
 			</c:forEach>
 	<script src="static/js/ws.js"></script>

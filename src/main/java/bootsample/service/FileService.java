@@ -46,19 +46,20 @@ public class FileService {
 
 			fw = new FileWriter(fileLocation+fileName);
 			bw = new BufferedWriter(fw);
+
+			boolean allow = true;
 			
-			System.out.println(before);
-			System.out.println(after);
-	
 			for(int i = 0 ; i < list.size();i++) {
-				
-			if(before.trim().equalsIgnoreCase(list.get(i))) {
+				if(allow) {	//if two lines are the same edite only one.
+			if(before.trim().equals(list.get(i))) {
 					list.set(i, after.trim());
+					allow = false;
 				}
+			}
 				bw.write(list.get(i));
 				bw.newLine();
-			}
-
+			
+		}
 		} catch (IOException e) {
 
 			e.printStackTrace();
