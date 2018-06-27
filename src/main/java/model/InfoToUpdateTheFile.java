@@ -1,4 +1,4 @@
-package bootsample.model;
+package model;
 
 public class InfoToUpdateTheFile implements Comparable<InfoToUpdateTheFile> {
 	
